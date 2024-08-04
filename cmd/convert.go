@@ -15,12 +15,13 @@ var convertCmd = &cobra.Command{
 	Long: `Takes in a Mongo query through a file or command line
 and converts it into Go code to be used for a go mongo-driver.`,
 	Args: cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		fileName := args[0]
 		fileBytes, err := os.ReadFile(fileName)
 		if err != nil {
-			panic(err)
+			return err
 		}
 		os.Stdout.Write(fileBytes)
+		return nil
 	},
 }
