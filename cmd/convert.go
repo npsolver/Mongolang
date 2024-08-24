@@ -3,6 +3,7 @@ package cmd
 import (
 	"os"
 
+	"github.com/Npsolver/Mongolang/scanner"
 	"github.com/spf13/cobra"
 )
 
@@ -21,7 +22,13 @@ and converts it into Go code to be used for a go mongo-driver.`,
 		if err != nil {
 			return err
 		}
-		os.Stdout.Write(fileBytes)
+		tokens, err := scanner.Scan(string(fileBytes))
+		if err != nil {
+			return err
+		}
+		for _, tk := range tokens {
+			tk.Print()
+		}
 		return nil
 	},
 }
