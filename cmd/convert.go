@@ -3,7 +3,7 @@ package cmd
 import (
 	"os"
 
-	"github.com/Npsolver/Mongolang/scanner"
+	"github.com/Npsolver/Mongolang/internal/compiler/scanner"
 	"github.com/spf13/cobra"
 )
 
