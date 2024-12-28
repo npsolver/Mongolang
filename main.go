@@ -1,9 +1,15 @@
 package main
 
 import (
-	"github.com/Npsolver/Mongolang/cmd"
+	"fmt"
+
+	"github.com/Npsolver/Mongolang/compiler/scanner"
 )
 
 func main() {
-	cmd.Execute()
+	testString := `db.getCollection("something").find({"business_id":{$in:["12345"]}})`
+	fmt.Println(testString)
+
+	tks, err := scanner.Scan(testString)
+
 }

@@ -3,8 +3,8 @@ package sdfa
 import (
 	"strings"
 
-	"github.com/Npsolver/Mongolang/internal/global"
-	"github.com/Npsolver/Mongolang/internal/lib/dfa"
+	"github.com/Npsolver/Mongolang/global"
+	"github.com/Npsolver/Mongolang/lib/dfa"
 )
 
 type SDFA struct {
