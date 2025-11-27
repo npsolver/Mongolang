@@ -5,8 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/Npsolver/Mongolang/internal/compiler/scanner/sdfa"
-	"github.com/Npsolver/Mongolang/internal/global"
+	"github.com/npsolver/Mongolang/internal/global"
 )
 
 var (
@@ -15,8 +14,8 @@ var (
 
 func Scan(s string) ([]*global.Token, error) {
 	allTokens := []*global.Token{}
-	sdfa := sdfa.NewSDFA("/Users/raiyanjamil/Raiyan/dev/projects/Mongolang/internal/compiler/scanner/sdfa/scanner.dfa")
-	traveler := sdfa.NewDFATraveler(strings.Join(strings.Split(s, " "), ""))
+	sdfa := NewSDFA("scanner.dfa")
+	traveler := sdfa.NewDFATraveler(global.NewTerminalSymbol(strings.Join(strings.Split(s, " "), "")))
 	for {
 		tk, err := traveler.NextToken()
 		if err != nil {

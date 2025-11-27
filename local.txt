@@ -1,0 +1,22 @@
+repo.users.find({ age: { $gt: 20 } })
+
+The scanner takes the query and gives you a sequence of tokens using a DFA.
+
+Tokens = Terminal Symbols 
+
+id dot id dot id 
+firstbracketleft 
+   secondbracketleft 
+      id colon 
+         secondbracketleft 
+            dollarsign id colon int 
+         secondbracketright 
+   secondbracketright 
+firstbracketright
+
+Parser also uses a DFA? 
+
+There are non-terminal symbols.
+
+Start symbol: query 
+

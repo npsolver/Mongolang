@@ -9,8 +9,8 @@ type State[T any, S comparable] struct {
 	isAccepting bool
 }
 
-func (curr *State[T, S]) NextState(sm S) *State[T, S] {
-	elem, ok := curr.bridges[Symbol[S]{sm}]
+func (curr *State[T, S]) NextState(sym Symbol[S]) *State[T, S] {
+	elem, ok := curr.bridges[sym]
 	if !ok {
 		return nil
 	}

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Npsolver/Mongolang/cmd"
+	"github.com/npsolver/Mongolang/cmd"
 )
 
 func main() {

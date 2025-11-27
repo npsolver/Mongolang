@@ -1,10 +1,10 @@
-package sdfa
+package scanner
 
 import (
 	"strings"
 
-	"github.com/Npsolver/Mongolang/internal/global"
-	"github.com/Npsolver/Mongolang/internal/lib/dfa"
+	"github.com/npsolver/Mongolang/internal/global"
+	"github.com/npsolver/Mongolang/internal/lib/dfa"
 )
 
 type SDFA struct {

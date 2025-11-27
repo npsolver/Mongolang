@@ -18,6 +18,7 @@ func NewFileReader(filePath string) <-chan string {
 		for scanner.Scan() {
 			ch <- scanner.Text()
 		}
+		close(ch)
 	}(filePath, ch)
 	return ch
 }
