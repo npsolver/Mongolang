@@ -14,7 +14,7 @@ var (
 
 func Scan(s string) ([]*dfa.Token, error) {
 	allTokens := []*dfa.Token{}
-	scanDFA := dfa.NewDFA("/Users/raiyanjamil/Raiyan/dev/projects/Mongolang/scanner/scanner.dfa")
+	scanDFA := dfa.NewDFA("/Users/raiyanjamil/Raiyan/coding/dev/projects/Mongolang_restart/Mongolang/scanner/scanner.dfa")
 	traveler := scanDFA.NewDFATraveler(strings.Join(strings.Split(s, " "), ""))
 	for {
 		tk, err := traveler.NextToken()
