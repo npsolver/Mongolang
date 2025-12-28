@@ -1,4 +1,4 @@
-module github.com/Npsolver/Mongolang
+module github.com/npsolver/Mongolang
 
 go 1.22.5
 

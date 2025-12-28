@@ -9,7 +9,7 @@ type StateName string
 
 type State struct {
 	name        string
-	bridges     map[Symbol]*State
+	bridges     map[Char]*State
 	isAccepting bool
 }
 
@@ -30,10 +30,10 @@ func (d *DFA) scanStates(scanner *bufio.Scanner) {
 
 func processState(name string) *State {
 	n := len(name)
-	m := make(map[Symbol]*State)
+	m := make(map[Char]*State)
 	currState := State{bridges: m}
 	if name[n-1:n] == exclamation {
-		currState.name = strings.Split(strings.Trim(name, " "), " ")[0]
+		currState.name = strings.Split(strings.Trim(name, " "), " ")[0] // Todo: remove other whitespaces like tabs
 		currState.isAccepting = true
 	} else {
 		currState.name = name
@@ -46,11 +46,11 @@ func (d *DFA) getState(name StateName) *State {
 	return d.allStates[name]
 }
 
-func (curr *State) addBridge(sm Symbol, next *State) {
+func (curr *State) addBridge(sm Char, next *State) {
 	curr.bridges[sm] = next
 }
 
-func (curr *State) nextState(sm Symbol) *State {
+func (curr *State) nextState(sm Char) *State {
 	elem, ok := curr.bridges[sm]
 	if !ok {
 		return nil

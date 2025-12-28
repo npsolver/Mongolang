@@ -1,9 +1,10 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
-	"github.com/Npsolver/Mongolang/scanner"
+	"github.com/npsolver/Mongolang/scanner"
 	"github.com/spf13/cobra"
 )
 
@@ -17,18 +18,30 @@ var convertCmd = &cobra.Command{
 and converts it into Go code to be used for a go mongo-driver.`,
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
+
+		// Input
 		fileName := args[0]
 		fileBytes, err := os.ReadFile(fileName)
 		if err != nil {
 			return err
 		}
-		tokens, err := scanner.Scan(string(fileBytes))
+
+		fmt.Println("\n\nPrinting Scanned symbols\n\n")
+
+		// Scanning
+		symbols, terminatingStates, err := scanner.Scan(string(fileBytes))
 		if err != nil {
 			return err
 		}
-		for _, tk := range tokens {
+		for _, tk := range symbols {
 			tk.Print()
 		}
+
+		fmt.Println("\n\nPrinting Parsed data\n\n")
+
+		// Parsing
+		// parser.Parse(symbols)
+
 		return nil
 	},
 }

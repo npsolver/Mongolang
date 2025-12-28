@@ -16,11 +16,11 @@ func (d *DFA) scanTransitions(scanner *bufio.Scanner) {
 		for _, c := range bridges {
 			if len(c) == 3 {
 				for i := c[0]; i != c[2]; i++ {
-					prev.addBridge(Symbol(i), next)
+					prev.addBridge(Char(i), next)
 				}
-				prev.addBridge(Symbol(c[2]), next)
+				prev.addBridge(Char(c[2]), next)
 			} else {
-				prev.addBridge(Symbol(c), next)
+				prev.addBridge(Char(c), next)
 			}
 		}
 		scanner.Scan()

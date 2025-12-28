@@ -1,35 +1,35 @@
 .SYMBOLS
 a-z A-Z 0-9 ( ) { } [ ] , : . " $ _
 .STATES
-start
-id !
-int !
-firstbracketleft !
-firstbracketright !
-secondbracketleft !
-secondbracketright !
-thirdbracketleft !
-thirdbracketright !
-comma !
-colon !
-dot !
-quote !
-dollarsign !
+START
+ID !
+INT !
+FIRSTBRACKETLEFT !
+FIRSTBRACKETRIGHT !
+SECONDBRACKETLEFT !
+SECONDBRACKETRIGHT !
+THIRDBRACKETLEFT !
+THIRDBRACKETRIGHT !
+COMMA !
+COLON !
+DOT !
+QUOTE !
+DOLLARSIGN !
 .TRANSITIONS
-start ( firstbracketleft
-start ) firstbracketright 
-start { secondbracketleft
-start } secondbracketright 
-start [ thirdbracketleft
-start ] thirdbracketright 
-start , comma 
-start : colon 
-start . dot
-start $ dollarsign
-start " quote 
-start _ underscore
-start 1-9 int 
-int 0-9 int
-start a-z A-Z _ id
-id a-z A-Z _ id
+START ( FIRSTBRACKETLEFT
+START ) FIRSTBRACKETRIGHT 
+START { SECONDBRACKETLEFT
+START } SECONDBRACKETRIGHT 
+START [ THIRDBRACKETLEFT
+START ] THIRDBRACKETRIGHT 
+START , COMMA 
+START : COLON 
+START . DOT
+START $ DOLLARSIGN
+START " QUOTE 
+START _ underscore
+START 1-9 INT 
+INT 0-9 INT
+START a-z A-Z _ ID
+ID a-z A-Z _ ID
 .END

@@ -1,0 +1,121 @@
+repo.users.find({ age: { $gt: 20 } })
+
+The scanner takes the query and gives you a sequence of tokens using a DFA.
+
+Tokens = Terminal Symbols 
+
+id dot id dot id 
+firstbracketleft 
+   secondbracketleft 
+      id colon 
+         secondbracketleft 
+            dollarsign id colon int 
+         secondbracketright 
+   secondbracketright 
+firstbracketright
+
+Parser also uses a DFA? 
+
+There are non-terminal symbols.
+
+Start symbol: query 
+
+
+
+
+After Scanning we get ->>>>>>>
+
+db.users.find({ age: { $gt: 20 } })
+
+ID db
+DOT .
+ID users
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+ID age
+COLON :
+SECONDBRACKETLEFT {
+DOLLARSIGN $
+ID gt
+COLON :
+INT 20
+SECONDBRACKETRIGHT }
+SECONDBRACKETRIGHT }
+FIRSTBRACKETRIGHT )
+
+
+Parsing ->>>>>>>
+
+
+
+
+
+a-z A-Z 0-9 ( ) { } [ ] , : . " $ _
+
+
+These are Char s (each of them is a byte)
+
+Terminal Symbol -> ID, INT, FIRSTBRACKETLEFT, etc. 
+Has name, value
+
+NonTerminal Symbol -> Database, Collection, etc.
+Has name 
+
+
+
+type Char byte 
+
+type Symbol struct {
+    name string
+    val  string 
+    isTerminal string
+}
+
+So that a Context Free Syntax can have both together
+
+
+
+
+
+
+
+Parsing
+
+
+
+
+
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT
+OPTIONS -> EMPTY
+OPTIONS -> OPTIONLIST 
+OPTIONLIST -> OPTION 
+OPTIONLIST -> OPTION COMMA OPTIONLIST
+DBNAME -> ID 
+OPTION -> SET
+SET -> SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT
+FIELDS -> EMPTY 
+FIELDS -> FIELDLIST 
+FIELDLIST -> FIELDITEM 
+FIELDLIST -> FIELDITEM COMMA FIELDLIST
+FIELDITEM -> FIELD COLON VALUE
+FIELDITEM -> FIELD COLON OPERATOR 
+FIELDITEM -> OPERATOR COLON LIST
+VALUE -> LIST 
+VALUE -> SET 
+VALUE -> ID
+OPERATOR -> DOLLARSIGN ID
+FIELD -> ID
+OPTION -> LIST 
+LIST -> THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT
+SETS -> EMPTY 
+SETS -> SETLIST 
+SETLIST -> SET 
+SETLIST -> SET COMMA SETLIST
+
+
+
+
+

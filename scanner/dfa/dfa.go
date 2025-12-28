@@ -14,20 +14,20 @@ const (
 )
 
 type DFA struct {
-	allSymbols    []Symbol
+	allChars      []Char
 	allStates     map[StateName]*State
 	startingState *State
 }
 
 func (d *DFA) NewDFATraveler(s string) *Traveler {
-	symbols := []Symbol{}
+	chars := []Char{}
 	for _, c := range s {
-		symbols = append(symbols, Symbol(c))
+		chars = append(chars, Char(c))
 	}
 	return &Traveler{
 		dfa:       d,
-		symbols:   symbols,
-		n:         len(symbols),
+		chars:     chars,
+		n:         len(chars),
 		nextIndex: 0,
 	}
 }
@@ -41,9 +41,19 @@ func NewDFA(filePath string) *DFA {
 	fileScanner := bufio.NewScanner(file)
 
 	dfa := &DFA{}
-	dfa.scanSymbols(fileScanner)
+	dfa.scanChars(fileScanner)
 	dfa.scanStates(fileScanner)
 	dfa.scanTransitions(fileScanner)
 
 	return dfa
+}
+
+func (d *DFA) GetTerminatingStates() []string {
+	states := []string{}
+	for _, v := range d.allStates {
+		if v.isAccepting {
+			states = append(states, v.name)
+		}
+	}
+	return states
 }
