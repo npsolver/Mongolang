@@ -1,5 +1,3 @@
-.SYMBOLS
-a-z A-Z 0-9 ( ) { } [ ] , : . " $ _
 .STATES
 START
 ID !

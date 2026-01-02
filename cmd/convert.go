@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/npsolver/Mongolang/parser"
 	"github.com/npsolver/Mongolang/scanner"
 	"github.com/spf13/cobra"
 )
@@ -29,7 +30,7 @@ and converts it into Go code to be used for a go mongo-driver.`,
 		fmt.Println("\n\nPrinting Scanned symbols\n\n")
 
 		// Scanning
-		symbols, terminatingStates, err := scanner.Scan(string(fileBytes))
+		symbols, err := scanner.Scan(string(fileBytes))
 		if err != nil {
 			return err
 		}
@@ -40,7 +41,7 @@ and converts it into Go code to be used for a go mongo-driver.`,
 		fmt.Println("\n\nPrinting Parsed data\n\n")
 
 		// Parsing
-		// parser.Parse(symbols)
+		parser.Parse(symbols)
 
 		return nil
 	},

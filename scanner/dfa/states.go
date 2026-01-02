@@ -16,6 +16,7 @@ type State struct {
 func (d *DFA) scanStates(scanner *bufio.Scanner) {
 	d.allStates = make(map[StateName]*State)
 	scanner.Scan()
+	scanner.Scan()
 	startingStateName := scanner.Text()
 	d.startingState = processState(startingStateName)
 	d.allStates[StateName(startingStateName)] = d.startingState

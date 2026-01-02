@@ -118,4 +118,126 @@ SETLIST -> SET COMMA SETLIST
 
 
 
+Done steps:
 
+
+
+
+Next steps:
+- Convert the dfa to use a generic type. Pass in a name to be used in it.
+
+
+
+When creating a DFA, pass a function called infoParser([]string{}) where each item in the array passed
+is a line in the section
+
+Have a section called Info where it will be like
+
+- StateID
+- Info
+
+
+.StateInfos
+.StateInfo
+- StateID 1
+- Info 1
+- Info 2 
+- ...
+- Info n 
+.StateInfo 
+- StateID 2
+- Info 1
+- Info 2 
+- ...
+- Info n 
+
+
+For scanners, it will be like,
+
+.StateInfos
+.StateInfo
+- 1
+- ID
+.StateInfo 
+- 2
+- INT
+.StateInfo 
+- 3 
+- FIRSTBRACKETLEFT
+
+
+For parsers, it will be like,
+.StateInfos 
+.StateInfo 
+- 1
+- START -> * BOF COMMAND EOF
+.StateInfo
+- 2
+- COMMAND -> * DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+
+Then we will have transitions for both :DDDD
+
+
+
+In scanner,
+
+States -> 
+    Accepting -> Represents a token, we retrieve the token, put the thing onto the list 
+    of seen tokens, and then restart from first state 
+
+
+
+In parser,
+
+States ->
+    Accepting -> We rather pop to the last one. 
+
+
+
+So cannot be combined.
+
+
+
+
+.STATES
+START
+ID !
+INT !
+...
+.TRANSITIONS
+START ( FIRSTBRACKETLEFT
+START ) FIRSTBRACKETRIGHT 
+...
+.END
+
+
+
+START -> BOF COMMAND EOF
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+
+
+
+// Generate the following using the parser.cfg
+
+
+.STATES 
+.STATE // Implicitly track state number 
+START -> * BOF COMMAND EOF
+.STATE 
+START -> BOF * COMMAND EOF
+COMMAND -> * DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+DBNAME -> * ID
+.STATE ! // Implies terminating state so will be used to pop afterwards
+DBNAME -> ID *
+...
+.TRANSITIONS
+1 BOF 2
+2 ID 3
+...
+.END
+
+// Separately handle EMPTY
+
+
+
+I guess just do this in memory

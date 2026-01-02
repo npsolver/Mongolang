@@ -14,7 +14,6 @@ const (
 )
 
 type DFA struct {
-	allChars      []Char
 	allStates     map[StateName]*State
 	startingState *State
 }
@@ -41,19 +40,8 @@ func NewDFA(filePath string) *DFA {
 	fileScanner := bufio.NewScanner(file)
 
 	dfa := &DFA{}
-	dfa.scanChars(fileScanner)
 	dfa.scanStates(fileScanner)
 	dfa.scanTransitions(fileScanner)
 
 	return dfa
-}
-
-func (d *DFA) GetTerminatingStates() []string {
-	states := []string{}
-	for _, v := range d.allStates {
-		if v.isAccepting {
-			states = append(states, v.name)
-		}
-	}
-	return states
 }

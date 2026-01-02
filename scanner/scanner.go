@@ -15,7 +15,7 @@ var (
 	errScanningError = errors.New("cannot scan query")
 )
 
-func Scan(s string) ([]*global.Symbol, []string, error) {
+func Scan(s string) ([]*global.Symbol, error) {
 	allSymbols := []*global.Symbol{}
 
 	_, file, _, ok := runtime.Caller(0)
@@ -27,19 +27,18 @@ func Scan(s string) ([]*global.Symbol, []string, error) {
 	fullPath := filepath.Join(dir, "scanner.dfa")
 
 	scanDFA := dfa.NewDFA(fullPath)
-	terminatingStates := scanDFA.GetTerminatingStates()
 
 	traveler := scanDFA.NewDFATraveler(strings.Join(strings.Split(s, " "), ""))
 	for {
 		tk, err := traveler.NextSymbol()
 		if err != nil {
 			log.Println(errScanningError)
-			return nil, nil, err // need to fix error handling here
+			return nil, err // need to fix error handling here
 		}
 		if tk == nil {
 			break
 		}
 		allSymbols = append(allSymbols, tk)
 	}
-	return allSymbols, terminatingStates, nil
+	return allSymbols, nil
 }

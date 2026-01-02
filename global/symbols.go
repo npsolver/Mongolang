@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+const (
+	Arrow     = "->"
+	Separator = "@"
+)
+
 type Symbol struct {
 	name          string
 	val           string
