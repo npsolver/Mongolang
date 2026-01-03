@@ -20,8 +20,16 @@ type Item struct {
 	rhsr []string
 }
 
+func (item *Item) GetLhs() string {
+	return item.lhs
+}
+
+func (item *Item) GetRhslLen() int {
+	return len(item.rhsl)
+}
+
 func CreateItem(cfs string) *Item {
-	cfsSymbols := strings.Split(cfs, " ")
+	cfsSymbols := strings.Fields(cfs)
 	lhs := cfsSymbols[0]
 	rhsl := []string{}
 	rhsr := []string{}

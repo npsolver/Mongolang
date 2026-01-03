@@ -10,12 +10,13 @@ import (
 )
 
 const (
-	END = ".END"
+	EMPTY = "EMPTY"
+	END   = ".END"
 )
 
 type EDFA struct {
 	terminatingSymbols map[string]struct{}
-	startingNode       *Node
+	StartingNode       *Node
 	allNodes           []*Node
 	itemToNode         map[string]*Node
 	leftSymbolToItems  map[string][]string

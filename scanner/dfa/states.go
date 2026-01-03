@@ -34,7 +34,7 @@ func processState(name string) *State {
 	m := make(map[Char]*State)
 	currState := State{bridges: m}
 	if name[n-1:n] == exclamation {
-		currState.name = strings.Split(strings.Trim(name, " "), " ")[0] // Todo: remove other whitespaces like tabs
+		currState.name = strings.Fields(strings.Trim(name, " "))[0] // Todo: remove other whitespaces like tabs
 		currState.isAccepting = true
 	} else {
 		currState.name = name

@@ -9,7 +9,7 @@ func (d *DFA) scanTransitions(scanner *bufio.Scanner) {
 	scanner.Scan()
 	for scanner.Text() != END {
 		transitions := scanner.Text()
-		temp := strings.Split(strings.Trim(transitions, " "), " ")
+		temp := strings.Fields(strings.Trim(transitions, " "))
 		prev := d.getState(StateName(temp[0]))
 		bridges := temp[1 : len(temp)-1]
 		next := d.getState(StateName(temp[len(temp)-1]))

@@ -1,20 +1,25 @@
 package edfa
 
 type Node struct {
-	id            int
+	ID            int
 	isTerminating bool
-	items         []*Item
-	bridges       map[string]*Node
+	Items         []*Item
+	Bridges       map[string]*Node
+	Visited       bool
 }
 
 func CreateNode(id int) *Node {
-	return &Node{id, false, make([]*Item, 0), make(map[string]*Node)}
+	return &Node{id, false, make([]*Item, 0), make(map[string]*Node), false}
 }
 
 func (n *Node) SetTerminating() {
 	n.isTerminating = true
 }
 
+func (n *Node) IsTerminating() bool {
+	return n.isTerminating
+}
+
 func (n *Node) AppendItem(item *Item) {
-	n.items = append(n.items, item)
+	n.Items = append(n.Items, item)
 }

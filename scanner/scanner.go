@@ -28,7 +28,7 @@ func Scan(s string) ([]*global.Symbol, error) {
 
 	scanDFA := dfa.NewDFA(fullPath)
 
-	traveler := scanDFA.NewDFATraveler(strings.Join(strings.Split(s, " "), ""))
+	traveler := scanDFA.NewDFATraveler(strings.Join(strings.Fields(s), ""))
 	for {
 		tk, err := traveler.NextSymbol()
 		if err != nil {

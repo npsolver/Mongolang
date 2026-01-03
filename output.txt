@@ -1,0 +1,610 @@
+go build -o /Users/raiyanjamil/.go/bin/mong
+
+
+Printing Scanned symbols
+
+
+ID db
+DOT .
+ID users
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+SECONDBRACKETRIGHT }
+FIRSTBRACKETRIGHT )
+
+
+Printing Parsed data
+
+
+Reached here
+printing all terminaitng symbols
+SECONDBRACKETLEFT
+SECONDBRACKETRIGHT
+FIRSTBRACKETRIGHT
+EOF
+BOF
+ID
+DOT
+FIRSTBRACKETLEFT
+Starting Item of node with id = 1
+START -> @ BOF COMMAND EOF
+Starting Item of node with id = 2
+START -> BOF @ COMMAND EOF
+Starting Item of node with id = 4
+COMMAND -> DBNAME @ DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+Starting Item of node with id = 6
+COMMAND -> DBNAME DOT @ COLLECTIONNAME DOT COLLECTIONCOMMAND
+Starting Item of node with id = 7
+COMMAND -> DBNAME DOT COLLECTIONNAME @ DOT COLLECTIONCOMMAND
+Starting Item of node with id = 9
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT @ COLLECTIONCOMMAND
+Starting Item of node with id = 10
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND @
+Inside new node with id = 10
+Printing items of a terminating node
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND @
+Starting Item of node with id = 11
+COLLECTIONCOMMAND -> ID @ FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT
+Starting Item of node with id = 12
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT @ OPTIONS FIRSTBRACKETRIGHT
+Starting Item of node with id = 13
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS @ FIRSTBRACKETRIGHT
+Starting Item of node with id = 21
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT @
+Inside new node with id = 21
+Printing items of a terminating node
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT @
+Inside new node with id = 13
+Printing items
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS @ FIRSTBRACKETRIGHT
+Printing Bridges
+FIRSTBRACKETRIGHT --> 21
+Starting Item of node with id = 14
+OPTIONS -> EMPTY @
+Inside new node with id = 14
+Printing items of a terminating node
+OPTIONS -> EMPTY @
+Starting Item of node with id = 15
+OPTIONS -> OPTIONLIST @
+Inside new node with id = 15
+Printing items of a terminating node
+OPTIONS -> OPTIONLIST @
+Starting Item of node with id = 16
+OPTIONLIST -> OPTION @
+Inside new node with id = 16
+Printing items of a terminating node
+OPTIONLIST -> OPTION @
+OPTIONLIST -> OPTION @ COMMA OPTIONLIST
+Starting Item of node with id = 17
+OPTION -> SET @
+Inside new node with id = 17
+Printing items of a terminating node
+OPTION -> SET @
+Starting Item of node with id = 18
+OPTION -> LIST @
+Inside new node with id = 18
+Printing items of a terminating node
+OPTION -> LIST @
+Starting Item of node with id = 19
+SET -> SECONDBRACKETLEFT @ FIELDS SECONDBRACKETRIGHT
+Starting Item of node with id = 22
+SET -> SECONDBRACKETLEFT FIELDS @ SECONDBRACKETRIGHT
+Starting Item of node with id = 30
+SET -> SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT @
+Inside new node with id = 30
+Printing items of a terminating node
+SET -> SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT @
+Inside new node with id = 22
+Printing items
+SET -> SECONDBRACKETLEFT FIELDS @ SECONDBRACKETRIGHT
+Printing Bridges
+SECONDBRACKETRIGHT --> 30
+Starting Item of node with id = 23
+FIELDS -> EMPTY @
+Inside new node with id = 23
+Printing items of a terminating node
+FIELDS -> EMPTY @
+Starting Item of node with id = 24
+FIELDS -> FIELDLIST @
+Inside new node with id = 24
+Printing items of a terminating node
+FIELDS -> FIELDLIST @
+Starting Item of node with id = 25
+FIELDLIST -> FIELDITEM @
+Inside new node with id = 25
+Printing items of a terminating node
+FIELDLIST -> FIELDITEM @
+FIELDLIST -> FIELDITEM @ COMMA FIELDLIST
+Starting Item of node with id = 26
+FIELDITEM -> FIELD @ COLON VALUE
+Starting Item of node with id = 31
+FIELDITEM -> FIELD COLON @ VALUE
+Starting Item of node with id = 35
+VALUE -> ID @
+Inside new node with id = 35
+Printing items of a terminating node
+VALUE -> ID @
+Starting Item of node with id = 36
+VALUE -> INT @
+Inside new node with id = 36
+Printing items of a terminating node
+VALUE -> INT @
+Starting Item of node with id = 20
+LIST -> THIRDBRACKETLEFT @ SETS THIRDBRACKETRIGHT
+Starting Item of node with id = 38
+SETS -> EMPTY @
+Inside new node with id = 38
+Printing items of a terminating node
+SETS -> EMPTY @
+Starting Item of node with id = 39
+SETS -> SETLIST @
+Inside new node with id = 39
+Printing items of a terminating node
+SETS -> SETLIST @
+Starting Item of node with id = 40
+SETLIST -> SET @
+Inside new node with id = 40
+Printing items of a terminating node
+SETLIST -> SET @
+SETLIST -> SET @ COMMA SETLIST
+Starting Item of node with id = 37
+LIST -> THIRDBRACKETLEFT SETS @ THIRDBRACKETRIGHT
+Starting Item of node with id = 41
+LIST -> THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT @
+Inside new node with id = 41
+Printing items of a terminating node
+LIST -> THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT @
+Inside new node with id = 37
+Printing items
+LIST -> THIRDBRACKETLEFT SETS @ THIRDBRACKETRIGHT
+Printing Bridges
+THIRDBRACKETRIGHT --> 41
+Inside new node with id = 20
+Printing items
+LIST -> THIRDBRACKETLEFT @ SETS THIRDBRACKETRIGHT
+SETS -> @ EMPTY
+SETS -> @ SETLIST
+SETLIST -> @ SET
+SETLIST -> @ SET COMMA SETLIST
+SET -> @ SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT
+Printing Bridges
+SET --> 40
+SECONDBRACKETLEFT --> 19
+SETS --> 37
+EMPTY --> 38
+SETLIST --> 39
+Starting Item of node with id = 32
+FIELDITEM -> FIELD COLON VALUE @
+Inside new node with id = 32
+Printing items of a terminating node
+FIELDITEM -> FIELD COLON VALUE @
+Starting Item of node with id = 33
+VALUE -> LIST @
+Inside new node with id = 33
+Printing items of a terminating node
+VALUE -> LIST @
+Starting Item of node with id = 34
+VALUE -> SET @
+Inside new node with id = 34
+Printing items of a terminating node
+VALUE -> SET @
+Inside new node with id = 31
+Printing items
+FIELDITEM -> FIELD COLON @ VALUE
+VALUE -> @ LIST
+VALUE -> @ SET
+VALUE -> @ ID
+VALUE -> @ INT
+LIST -> @ THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT
+SET -> @ SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT
+Printing Bridges
+INT --> 36
+THIRDBRACKETLEFT --> 20
+SECONDBRACKETLEFT --> 19
+VALUE --> 32
+LIST --> 33
+SET --> 34
+ID --> 35
+Inside new node with id = 26
+Printing items
+FIELDITEM -> FIELD @ COLON VALUE
+Printing Bridges
+COLON --> 31
+Starting Item of node with id = 27
+FIELDITEM -> OPERATOR @ COLON VALUE
+Starting Item of node with id = 42
+FIELDITEM -> OPERATOR COLON @ VALUE
+Starting Item of node with id = 43
+FIELDITEM -> OPERATOR COLON VALUE @
+Inside new node with id = 43
+Printing items of a terminating node
+FIELDITEM -> OPERATOR COLON VALUE @
+Inside new node with id = 42
+Printing items
+FIELDITEM -> OPERATOR COLON @ VALUE
+VALUE -> @ LIST
+VALUE -> @ SET
+VALUE -> @ ID
+VALUE -> @ INT
+LIST -> @ THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT
+SET -> @ SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT
+Printing Bridges
+ID --> 35
+INT --> 36
+THIRDBRACKETLEFT --> 20
+SECONDBRACKETLEFT --> 19
+VALUE --> 43
+LIST --> 33
+SET --> 34
+Inside new node with id = 27
+Printing items
+FIELDITEM -> OPERATOR @ COLON VALUE
+Printing Bridges
+COLON --> 42
+Starting Item of node with id = 28
+FIELD -> ID @
+Inside new node with id = 28
+Printing items of a terminating node
+FIELD -> ID @
+Starting Item of node with id = 29
+OPERATOR -> DOLLARSIGN @ ID
+Starting Item of node with id = 44
+OPERATOR -> DOLLARSIGN ID @
+Inside new node with id = 44
+Printing items of a terminating node
+OPERATOR -> DOLLARSIGN ID @
+Inside new node with id = 29
+Printing items
+OPERATOR -> DOLLARSIGN @ ID
+Printing Bridges
+ID --> 44
+Inside new node with id = 19
+Printing items
+SET -> SECONDBRACKETLEFT @ FIELDS SECONDBRACKETRIGHT
+FIELDS -> @ EMPTY
+FIELDS -> @ FIELDLIST
+FIELDLIST -> @ FIELDITEM
+FIELDLIST -> @ FIELDITEM COMMA FIELDLIST
+FIELDITEM -> @ FIELD COLON VALUE
+FIELDITEM -> @ OPERATOR COLON VALUE
+FIELD -> @ ID
+OPERATOR -> @ DOLLARSIGN ID
+Printing Bridges
+OPERATOR --> 27
+ID --> 28
+DOLLARSIGN --> 29
+FIELDS --> 22
+EMPTY --> 23
+FIELDLIST --> 24
+FIELDITEM --> 25
+FIELD --> 26
+Inside new node with id = 12
+Printing items
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT @ OPTIONS FIRSTBRACKETRIGHT
+OPTIONS -> @ EMPTY
+OPTIONS -> @ OPTIONLIST
+OPTIONLIST -> @ OPTION
+OPTIONLIST -> @ OPTION COMMA OPTIONLIST
+OPTION -> @ SET
+OPTION -> @ LIST
+SET -> @ SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT
+LIST -> @ THIRDBRACKETLEFT SETS THIRDBRACKETRIGHT
+Printing Bridges
+LIST --> 18
+SECONDBRACKETLEFT --> 19
+THIRDBRACKETLEFT --> 20
+OPTIONS --> 13
+EMPTY --> 14
+OPTIONLIST --> 15
+OPTION --> 16
+SET --> 17
+Inside new node with id = 11
+Printing items
+COLLECTIONCOMMAND -> ID @ FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT
+Printing Bridges
+FIRSTBRACKETLEFT --> 12
+Inside new node with id = 9
+Printing items
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT @ COLLECTIONCOMMAND
+COLLECTIONCOMMAND -> @ ID FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT
+Printing Bridges
+COLLECTIONCOMMAND --> 10
+ID --> 11
+Inside new node with id = 7
+Printing items
+COMMAND -> DBNAME DOT COLLECTIONNAME @ DOT COLLECTIONCOMMAND
+Printing Bridges
+DOT --> 9
+Starting Item of node with id = 8
+COLLECTIONNAME -> ID @
+Inside new node with id = 8
+Printing items of a terminating node
+COLLECTIONNAME -> ID @
+Inside new node with id = 6
+Printing items
+COMMAND -> DBNAME DOT @ COLLECTIONNAME DOT COLLECTIONCOMMAND
+COLLECTIONNAME -> @ ID
+Printing Bridges
+COLLECTIONNAME --> 7
+ID --> 8
+Inside new node with id = 4
+Printing items
+COMMAND -> DBNAME @ DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+Printing Bridges
+DOT --> 6
+Starting Item of node with id = 5
+DBNAME -> ID @
+Inside new node with id = 5
+Printing items of a terminating node
+DBNAME -> ID @
+Starting Item of node with id = 3
+START -> BOF COMMAND @ EOF
+Starting Item of node with id = 45
+START -> BOF COMMAND EOF @
+Inside new node with id = 45
+Printing items of a terminating node
+START -> BOF COMMAND EOF @
+Inside new node with id = 3
+Printing items
+START -> BOF COMMAND @ EOF
+Printing Bridges
+EOF --> 45
+Inside new node with id = 2
+Printing items
+START -> BOF @ COMMAND EOF
+COMMAND -> @ DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND
+DBNAME -> @ ID
+Printing Bridges
+COMMAND --> 3
+DBNAME --> 4
+ID --> 5
+Inside new node with id = 1
+Printing items
+START -> @ BOF COMMAND EOF
+Printing Bridges
+BOF --> 2
+In loop with index = 0
+1 
+
+Adding symbol BOF with value BOF to stack
+In loop with index = 1
+1 2 
+BOF BOF
+
+Adding symbol ID with value db to stack
+In loop with index = 2
+1 2 5 
+BOF BOF
+ID db
+
+Reducing using item
+DBNAME -> ID @
+In loop with index = 2
+1 2 4 
+BOF BOF
+DBNAME 
+
+Adding symbol DOT with value . to stack
+In loop with index = 3
+1 2 4 6 
+BOF BOF
+DBNAME 
+DOT .
+
+Adding symbol ID with value users to stack
+In loop with index = 4
+1 2 4 6 8 
+BOF BOF
+DBNAME 
+DOT .
+ID users
+
+Reducing using item
+COLLECTIONNAME -> ID @
+In loop with index = 4
+1 2 4 6 7 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+
+Adding symbol DOT with value . to stack
+In loop with index = 5
+1 2 4 6 7 9 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+
+Adding symbol ID with value find to stack
+In loop with index = 6
+1 2 4 6 7 9 11 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+
+Adding symbol FIRSTBRACKETLEFT with value ( to stack
+In loop with index = 7
+1 2 4 6 7 9 11 12 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+
+Adding symbol SECONDBRACKETLEFT with value { to stack
+In loop with index = 8
+1 2 4 6 7 9 11 12 19 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+
+Adding symbol SECONDBRACKETRIGHT with value } to stack
+In loop with index = 8
+1 2 4 6 7 9 11 12 19 23 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+SECONDBRACKETRIGHT }
+
+Reducing using item
+FIELDS -> EMPTY @
+In loop with index = 8
+1 2 4 6 7 9 11 12 19 22 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+FIELDS 
+
+Adding symbol SECONDBRACKETRIGHT with value } to stack
+In loop with index = 9
+1 2 4 6 7 9 11 12 19 22 30 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SECONDBRACKETLEFT {
+FIELDS 
+SECONDBRACKETRIGHT }
+
+Reducing using item
+SET -> SECONDBRACKETLEFT FIELDS SECONDBRACKETRIGHT @
+In loop with index = 9
+1 2 4 6 7 9 11 12 17 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+SET 
+
+Reducing using item
+OPTION -> SET @
+In loop with index = 9
+1 2 4 6 7 9 11 12 16 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+OPTION 
+
+Reducing using item
+OPTIONLIST -> OPTION @
+In loop with index = 9
+1 2 4 6 7 9 11 12 15 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+OPTIONLIST 
+
+Reducing using item
+OPTIONS -> OPTIONLIST @
+In loop with index = 9
+1 2 4 6 7 9 11 12 13 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+OPTIONS 
+
+Adding symbol FIRSTBRACKETRIGHT with value ) to stack
+In loop with index = 10
+1 2 4 6 7 9 11 12 13 21 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+ID find
+FIRSTBRACKETLEFT (
+OPTIONS 
+FIRSTBRACKETRIGHT )
+
+Reducing using item
+COLLECTIONCOMMAND -> ID FIRSTBRACKETLEFT OPTIONS FIRSTBRACKETRIGHT @
+In loop with index = 10
+1 2 4 6 7 9 10 
+BOF BOF
+DBNAME 
+DOT .
+COLLECTIONNAME 
+DOT .
+COLLECTIONCOMMAND 
+
+Reducing using item
+COMMAND -> DBNAME DOT COLLECTIONNAME DOT COLLECTIONCOMMAND @
+In loop with index = 10
+1 2 3 
+BOF BOF
+COMMAND 
+
+Adding symbol EOF with value EOF to stack
+In loop with index = 11
+1 2 3 45 
+BOF BOF
+COMMAND 
+EOF EOF
+
+Reducing using item
+START -> BOF COMMAND EOF @
+Finished tree:
+START 
+	BOF BOF
+	COMMAND 
+		DBNAME 
+			ID db
+		DOT .
+		COLLECTIONNAME 
+			ID users
+		DOT .
+		COLLECTIONCOMMAND 
+			ID find
+			FIRSTBRACKETLEFT (
+			OPTIONS 
+				OPTIONLIST 
+					OPTION 
+						SET 
+							SECONDBRACKETLEFT {
+							FIELDS 
+								EMPTY EMPTY
+							SECONDBRACKETRIGHT }
+			FIRSTBRACKETRIGHT )
+	EOF EOF
