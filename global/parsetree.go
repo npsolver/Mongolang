@@ -1,26 +1,24 @@
-package parser
+package global
 
 import (
 	"fmt"
-
-	"github.com/npsolver/Mongolang/global"
 )
 
 type TreeNode struct {
-	symbol   *global.Symbol
-	children []*TreeNode
+	Symbol   *Symbol
+	Children []*TreeNode
 }
 
 func (tn *TreeNode) AppendChild(child *TreeNode) {
-	tn.children = append([]*TreeNode{child}, tn.children...)
+	tn.Children = append([]*TreeNode{child}, tn.Children...)
 }
 
 func (tn *TreeNode) printHelper(spaces int) {
 	for i := 0; i < spaces; i++ {
 		fmt.Print("\t")
 	}
-	tn.symbol.Print()
-	for _, child := range tn.children {
+	tn.Symbol.Print()
+	for _, child := range tn.Children {
 		child.printHelper(spaces + 1)
 	}
 }

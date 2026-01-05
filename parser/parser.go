@@ -19,7 +19,7 @@ import (
 // 	fmt.Println(terminalSymbols)
 // }
 
-func Parse(symbols []*global.Symbol) *TreeNode {
+func Parse(symbols []*global.Symbol) *global.TreeNode {
 	BOF := global.NewTerminatingSymbol("BOF", "BOF")
 	EOF := global.NewTerminatingSymbol("EOF", "EOF")
 	symList := append([]*global.Symbol{BOF}, symbols...)
@@ -41,7 +41,7 @@ func Parse(symbols []*global.Symbol) *TreeNode {
 	// Parse the symbols
 	edfaStack := []*edfa.Node{parseEDFA.StartingNode}
 	symbolStack := []*global.Symbol{}
-	treeNodeStack := []*TreeNode{}
+	treeNodeStack := []*global.TreeNode{}
 
 	index := 0
 	for (index != len(symList)) || (len(edfaStack) > 1) {
@@ -65,12 +65,12 @@ func Parse(symbols []*global.Symbol) *TreeNode {
 
 		// Reduce
 		if edfaStack[len(edfaStack)-1].IsTerminating() { // handle empty case~~~
-			fmt.Println("Reducing using item")
+			fmt.Println("Reducing using item from inside node with id", edfaStack[len(edfaStack)-1].ID)
 			edfaStack[len(edfaStack)-1].Items[0].Print()
 
 			rhsLen := edfaStack[len(edfaStack)-1].Items[0].GetRhslLen()
 			newSymbol := global.NewNonTerminatingSymbol(edfaStack[len(edfaStack)-1].Items[0].GetLhs())
-			newTreeNode := &TreeNode{newSymbol, []*TreeNode{}}
+			newTreeNode := &global.TreeNode{newSymbol, []*global.TreeNode{}}
 			for i := 1; i <= rhsLen; i++ {
 				edfaStack = edfaStack[:len(edfaStack)-1]
 				symbolStack = symbolStack[:len(symbolStack)-1]
@@ -95,9 +95,9 @@ func Parse(symbols []*global.Symbol) *TreeNode {
 			nextNode, exists := edfaStack[len(edfaStack)-1].Bridges[currSymbol.GetName()]
 			if !exists {
 				nextNode = edfaStack[len(edfaStack)-1].Bridges[edfa.EMPTY]
-				treeNodeStack = append(treeNodeStack, &TreeNode{global.NewTerminatingSymbol(edfa.EMPTY, edfa.EMPTY), nil})
+				treeNodeStack = append(treeNodeStack, &global.TreeNode{global.NewTerminatingSymbol(edfa.EMPTY, edfa.EMPTY), nil})
 			} else {
-				treeNodeStack = append(treeNodeStack, &TreeNode{currSymbol, nil})
+				treeNodeStack = append(treeNodeStack, &global.TreeNode{currSymbol, nil})
 				index++
 			}
 			edfaStack = append(edfaStack, nextNode)
@@ -118,5 +118,5 @@ func Parse(symbols []*global.Symbol) *TreeNode {
 	fmt.Println("Finished tree:")
 	treeNodeStack[0].Print()
 
-	return nil
+	return treeNodeStack[0]
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/npsolver/Mongolang/codegen"
 	"github.com/npsolver/Mongolang/parser"
 	"github.com/npsolver/Mongolang/scanner"
 	"github.com/spf13/cobra"
@@ -41,7 +42,19 @@ and converts it into Go code to be used for a go mongo-driver.`,
 		fmt.Println("\n\nPrinting Parsed data\n\n")
 
 		// Parsing
-		parser.Parse(symbols)
+		startNode := parser.Parse(symbols)
+
+		// Context Sensitive Analysis
+		// Stuff like type checking
+		// Todo
+		// also test stuff in parseCFS 
+		// like rn we are transitioning until the end
+		// make sure to find whether we can come back
+
+		// Code Generation
+		filter := codegen.Generate(startNode)
+
+		fmt.Println(filter)
 
 		return nil
 	},

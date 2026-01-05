@@ -1,0 +1,34 @@
+package local
+
+func gen() {
+	filter := bson.D{
+		{"$and",
+			bson.A{
+				bson.D{
+					{"rating", 
+						bson.D{{"$gt", 5}}
+					}
+				},
+				bson.D{
+					{"rating", 
+						bson.D{{"$lt", 9}}
+					}
+				},
+			}
+		},
+	}
+
+	filter := bson.D{{"$and", bson.A{ bson.D{{ "rating", bson.D{{"$gt", 5}}
+					}
+				},
+				bson.D{
+					{"rating", 
+						bson.D{{"$lt", 9}}
+					}
+				},
+			}
+		},
+	}
+
+
+}
