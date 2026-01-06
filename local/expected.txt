@@ -1,0 +1,41 @@
+db.users.find({
+    $or: [
+        { age: 
+            { $lt: 18 } 
+        }, 
+        { age: 
+            { $gt: 65 } }
+    ]
+})
+
+
+bson.M{
+    "$or": bson.A{
+        bson.M{
+            "age": bson.M{
+                "$lt": 18
+            }
+        },
+        bson.M{
+            "age": bson.M{
+                "$gt": 65
+            }
+        }
+    }
+}
+
+
+bson.M{
+	"$or": bson.A{
+		bson.M{
+			"age": bson.M{
+				"$lt": 18
+			}
+		},
+		bson.M{
+			"age": bson.M{
+				"$gt": 65
+			}
+		}
+	}
+}

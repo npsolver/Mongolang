@@ -2,10 +2,10 @@ package edfa
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 
+	"github.com/npsolver/Mongolang/debug"
 	"github.com/npsolver/Mongolang/global"
 )
 
@@ -24,7 +24,7 @@ type EDFA struct {
 }
 
 func NewEDFA(filePath string, symList []*global.Symbol) *EDFA {
-	fmt.Println("Reached here")
+	debug.DebugPrint("Reached here")
 	file, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal(err)
@@ -40,17 +40,12 @@ func NewEDFA(filePath string, symList []*global.Symbol) *EDFA {
 		edfa.terminatingSymbols[sym.GetName()] = struct{}{}
 	}
 
-	fmt.Println("printing all terminaitng symbols")
+	debug.DebugPrint("printing all terminaitng symbols")
 	for item := range edfa.terminatingSymbols {
-		fmt.Println(item)
+		debug.DebugPrint(item)
 	}
 
 	edfa.parseCFS(fileScanner)
 
 	return edfa
-}
-
-func (e *EDFA) isTerminating(symbol string) bool {
-	_, exists := e.terminatingSymbols[symbol]
-	return exists
 }

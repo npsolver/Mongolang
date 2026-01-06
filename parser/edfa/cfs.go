@@ -2,8 +2,9 @@ package edfa
 
 import (
 	"bufio"
-	"fmt"
 	"strings"
+
+	"github.com/npsolver/Mongolang/debug"
 )
 
 func nodeCreator() func(item *Item) *Node {
@@ -23,18 +24,20 @@ func (e *EDFA) dfs(curr *Node) {
 	curr.Visited = true
 
 	startingItem := curr.Items[0].Format()
-	fmt.Printf("Starting Item of node with id = %d\n", curr.ID)
-	fmt.Println(startingItem)
+	debug.DebugPrint("Starting Item of node with id = %d\n", curr.ID)
+	debug.DebugPrint(startingItem)
 	leftSymbols := make(map[string]struct{})
 	index := 0
 	for index != len(curr.Items) {
 		currItem := curr.Items[index]
 		if len(currItem.rhsr) == 0 {
 			curr.SetTerminating()
-			fmt.Printf("Inside new node with id = %d\n", curr.ID)
-			fmt.Println("Printing items of a terminating node")
-			for _, item := range curr.Items {
-				item.Print()
+			debug.DebugPrint("Inside new node with id = %d\n", curr.ID)
+			debug.DebugPrint("Printing items of a terminating node")
+			if debug.DEBUG {
+				for _, item := range curr.Items {
+					item.Print()
+				}
 			}
 			return
 		}
@@ -97,14 +100,16 @@ func (e *EDFA) dfs(curr *Node) {
 	// 	index++
 	// }
 
-	fmt.Printf("Inside new node with id = %d\n", curr.ID)
-	fmt.Println("Printing items")
-	for _, item := range curr.Items {
-		item.Print()
+	debug.DebugPrint("Inside new node with id = %d\n", curr.ID)
+	debug.DebugPrint("Printing items")
+	if debug.DEBUG {
+		for _, item := range curr.Items {
+			item.Print()
+		}
 	}
-	fmt.Println("Printing Bridges")
+	debug.DebugPrint("Printing Bridges")
 	for s, b := range curr.Bridges {
-		fmt.Printf("%s --> %d\n", s, b.ID)
+		debug.DebugPrint("%s --> %d\n", s, b.ID)
 	}
 
 }

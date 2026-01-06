@@ -1,23 +1,13 @@
 package parser
 
 import (
-	"fmt"
 	"path/filepath"
 	"runtime"
 
+	"github.com/npsolver/Mongolang/debug"
 	"github.com/npsolver/Mongolang/global"
 	"github.com/npsolver/Mongolang/parser/edfa"
 )
-
-// func Parse(symbols []*dfa.Symbol) {
-
-// 	terminalSymbols := []string{}
-// 	for _, t := range symbols {
-// 		terminalSymbols = append(terminalSymbols, t.GetName())
-// 	}
-
-// 	fmt.Println(terminalSymbols)
-// }
 
 func Parse(symbols []*global.Symbol) *global.TreeNode {
 	BOF := global.NewTerminatingSymbol("BOF", "BOF")
@@ -46,15 +36,15 @@ func Parse(symbols []*global.Symbol) *global.TreeNode {
 	index := 0
 	for (index != len(symList)) || (len(edfaStack) > 1) {
 
-		fmt.Printf("In loop with index = %d\n", index)
+		debug.DebugPrint("In loop with index = %d\n", index)
 		for _, e := range edfaStack {
-			fmt.Printf("%d ", e.ID)
+			debug.DebugPrint("%d ", e.ID)
 		}
-		fmt.Printf("\n")
+		debug.DebugPrint("\n")
 		for _, s := range symbolStack {
-			fmt.Printf("%s %s\n", s.GetName(), s.GetValue())
+			debug.DebugPrint("%s %s\n", s.GetName(), s.GetValue())
 		}
-		fmt.Printf("\n")
+		debug.DebugPrint("\n")
 
 		// if you can reduce, then reduce, otherwise add a symbol
 
@@ -65,8 +55,10 @@ func Parse(symbols []*global.Symbol) *global.TreeNode {
 
 		// Reduce
 		if edfaStack[len(edfaStack)-1].IsTerminating() { // handle empty case~~~
-			fmt.Println("Reducing using item from inside node with id", edfaStack[len(edfaStack)-1].ID)
-			edfaStack[len(edfaStack)-1].Items[0].Print()
+			debug.DebugPrint("Reducing using item from inside node with id", edfaStack[len(edfaStack)-1].ID)
+			if debug.DEBUG {
+				edfaStack[len(edfaStack)-1].Items[0].Print()
+			}
 
 			rhsLen := edfaStack[len(edfaStack)-1].Items[0].GetRhslLen()
 			newSymbol := global.NewNonTerminatingSymbol(edfaStack[len(edfaStack)-1].Items[0].GetLhs())
@@ -90,7 +82,7 @@ func Parse(symbols []*global.Symbol) *global.TreeNode {
 			// treeNodeStack[len(treeNodeStack)-1] = newTreeNode
 		} else { // Add
 			currSymbol := symList[index]
-			fmt.Printf("Adding symbol %s with value %s to stack\n", currSymbol.GetName(), currSymbol.GetValue())
+			debug.DebugPrint("Adding symbol %s with value %s to stack\n", currSymbol.GetName(), currSymbol.GetValue())
 			// add to stacks
 			nextNode, exists := edfaStack[len(edfaStack)-1].Bridges[currSymbol.GetName()]
 			if !exists {
@@ -115,8 +107,10 @@ func Parse(symbols []*global.Symbol) *global.TreeNode {
 		// otherwise, continue
 	}
 
-	fmt.Println("Finished tree:")
-	treeNodeStack[0].Print()
+	debug.DebugPrint("Finished tree:")
+	if debug.DEBUG {
+		treeNodeStack[0].Print()
+	}
 
 	return treeNodeStack[0]
 }

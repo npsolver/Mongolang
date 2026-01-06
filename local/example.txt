@@ -1,6 +1,9 @@
 db.users.find({
-  age: {
-    $gt: 20,
-    $lt: 30
-  }
+    $or: [
+        { age: 
+            { $lt: 18 } 
+        }, 
+        { age: 
+            { $gt: 65 } }
+    ]
 })

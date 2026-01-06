@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/npsolver/Mongolang/codegen"
+	"github.com/npsolver/Mongolang/debug"
 	"github.com/npsolver/Mongolang/parser"
 	"github.com/npsolver/Mongolang/scanner"
 	"github.com/spf13/cobra"
@@ -28,26 +29,32 @@ and converts it into Go code to be used for a go mongo-driver.`,
 			return err
 		}
 
-		fmt.Println("\n\nPrinting Scanned symbols\n\n")
-
 		// Scanning
 		symbols, err := scanner.Scan(string(fileBytes))
 		if err != nil {
 			return err
 		}
-		for _, tk := range symbols {
-			tk.Print()
-		}
 
-		fmt.Println("\n\nPrinting Parsed data\n\n")
+		// Debug
+		if debug.DEBUG {
+			fmt.Println("Printing Scanned symbols")
+			for _, tk := range symbols {
+				tk.Print()
+			}
+		}
 
 		// Parsing
 		startNode := parser.Parse(symbols)
 
+		// Debug
+		if debug.DEBUG {
+			fmt.Println("Printing Parsed data")
+		}
+
 		// Context Sensitive Analysis
 		// Stuff like type checking
 		// Todo
-		// also test stuff in parseCFS 
+		// also test stuff in parseCFS
 		// like rn we are transitioning until the end
 		// make sure to find whether we can come back
 
