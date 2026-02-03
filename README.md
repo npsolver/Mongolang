@@ -1,2 +1,2 @@
 # Mongolang
-A tool to generate Golang code from Mongo Queries.
+A tool to generate Golang code from MongoDB queries. 
