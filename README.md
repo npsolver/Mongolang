@@ -55,3 +55,6 @@ bson.M{
     }
 }
 ```
+
+## Future Development
+We aim to provide fully working Golang code that one can use out of the box, instead of just providing the filter above.
