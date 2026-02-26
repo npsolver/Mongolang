@@ -1,4 +1,4 @@
-<h6 align="center"> <img src="https://github.com/npsolver/Mongolang/blob/master/public/logo-readme.png" width=400 height=400 /></h6>
+<h6 align="center"> <img src="https://github.com/npsolver/Mongolang/blob/master/web/public/logo-readme.png" width=400 height=400 /></h6>
 A tool to generate Golang code from MongoDB queries. 
 
 ## Motivation behind the Project
